@@ -1,0 +1,27 @@
+<div id="container" data-myID="{{myID}}"  data-toID="{{ToID}}" class="content-shadow"> 
+    <aside>       
+        <ul id="ListOfFollowers">
+        </ul>
+    </aside>
+    <main>
+        <header class="heder" id="ChatHeader" data-id="0">
+        </header>
+        <ul id="chat">   
+        </ul>
+        <footer>
+            <textarea id="msg" placeholder="Type your message"></textarea>
+            <button type="button" class="float-right btn btn-main" id="addmsg">Send</button>
+        </footer>
+    </main>
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    toid = $('#container').attr('data-toID');
+    chat.init();
+});
+</script>
+
+
+

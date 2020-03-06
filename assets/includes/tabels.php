@@ -1,0 +1,33 @@
+<?php
+// @author Saad Mirza https://saadmirza.net
+define('T_USERS', 'users');
+define('T_CONFIG', 'config');
+define('T_ENTRIES', 'entries');
+define('T_NEWS', 'news');
+define('T_POLLS_PAGES', 'poll_Pages');
+define('T_POLLS', 'polls');
+define('T_VOTES', 'votes');
+define('T_LISTS', 'lists');
+define('T_VIDEOS', 'videos');
+define('T_MUSIC', 'music');
+define('T_SESSIONS', 'sessions');
+define('T_TERMS', 'terms');
+define('T_ADS', 'ads');
+define('T_APP_SESSIONS', 'sessions');
+define('T_COMMENTS', 'comments');
+define('T_COMM_REPLIES', 'comm_replies');
+define('T_REACTIONS', 'user_reactions');
+define('T_VER_REQUESTS', 'verification_requests');
+define('T_QUIZZES', 'quizzes');
+define('T_ANSWERS', 'quiz_answers');
+define('T_BR_NEWS', 'breaking_news');
+define('T_ANNOUNCEMENT', 'announcement');
+define('T_ANNOUNCEMENT_VIEWS', 'announcement_views');
+define('T_UC_FIELDS', 'uc_fields');
+define('T_PR_FIELDS', 'profile_fields');
+define('T_BANNED_IPS', 'banned_ip');
+define('T_REPORTS', 'reports');
+define('T_PAYMENTS', 'payments');
+define('T_USER_ADS', 'user_ads');
+define('T_FOLLOWS', 'follow');
+define('T_MSG', ' message');

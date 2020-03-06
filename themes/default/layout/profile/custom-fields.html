@@ -1,0 +1,11 @@
+<li class="list-group-item list-more-info">
+    <?php 
+    echo '<span>' . $yx['field']['name'] . '</span>: ';
+    if ($yx['field']['select_type'] == 'yes') {
+      	$options = @explode(',', $yx['field']['type']); 
+      	echo $options[$yx['user_fields'][$yx['field']['fid']] - 1];
+    } else {
+      	echo $yx['user_fields'][$yx['field']['fid']];
+    }
+    ?>
+</li>

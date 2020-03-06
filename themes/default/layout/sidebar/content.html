@@ -1,0 +1,316 @@
+<div class="sidebar">
+	<div class="ads-content">
+		{{SIDEBAR_AD}}
+	</div>
+	<div class="sidebar-community">
+		<?php if ($yx['config']['show_subscribe_box'] == 1): ?>
+		<!-- Subscribe -->
+		<h4 class="videos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4M12,11L20,6H4L12,11M4,18H20V8.37L12,13.36L4,8.37V18Z" /></svg>{{LANG subscribe_us}}</h4>
+		<div class="width-100"> 
+			<div class="sidebar_subscribe_box">
+				<div class="sidebar-subscribe-box-wrapper">
+					<span class="subscribe_svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4M12,11L20,6H4L12,11M4,18H20V8.37L12,13.36L4,8.37V18Z" /></svg></span>
+					<p>{{LANG subscribe_info}}</p>
+					<div class="sidebar-subscribe-box-form">
+						<form action="https://feedburner.google.com/fb/a/mailverify?uri={{CONFIG subscribe_box_username}}" class="sidebar-subscribe-box-form" method="post" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri={{CONFIG subscribe_box_username}}', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" target="popupwindow">
+							<input name="uri" type="hidden" value="{{CONFIG subscribe_box_username}}" />
+							<input name="loc" type="hidden" value="en_US" />
+							<input class="form-control" name="email" type="email" required placeholder="{{LANG email_address}}"/>
+							<input class="btn btn-main yx_btn" title="" type="submit" value="{{LANG subscribe_now}}" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+		<div class="clear"></div>
+	</div>
+	{{SB_UAD_1}}
+	<div class="sidebar-content">
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($yx['news']['id'])) {
+				$not_included = $yx['news']['id'];
+			}
+			$fetch_data_array_news = array(
+				'table' => T_NEWS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'YX_GetNews',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_news['where'], $array);
+			}
+			$news_n = YX_FetchDataFromDB($fetch_data_array_news);
+			?><?php if (!empty($news_n)) { ?>
+				<h4 class="news"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z" /></svg> {{LANG more_news}}</h4>
+			<?php } ?><?php
+			if (!empty($news_n)) {
+				foreach ($news_n as $key => $yx['sidebar']) {
+					$yx['sidebar']['news']['posted'] = date('n, M Y h:i A',$yx['sidebar']['news']['time']);
+					echo YX_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($yx['news']['id'])) {
+				$not_included = $yx['news']['id'];
+			}
+			$fetch_data_array_list = array(
+				'table' => T_LISTS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'YX_GetLists',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_list['where'], $array);
+			}
+			$news_l = YX_FetchDataFromDB($fetch_data_array_list);
+			?><?php if (!empty($news_l)) { ?>
+				<h4 class="lists"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M5,9.5L7.5,14H2.5L5,9.5M3,4H7V8H3V4M5,20A2,2 0 0,0 7,18A2,2 0 0,0 5,16A2,2 0 0,0 3,18A2,2 0 0,0 5,20M9,5V7H21V5H9M9,19H21V17H9V19M9,13H21V11H9V13Z" /></svg> {{LANG more_lists}}</h4>
+			<?php } ?><?php
+			if (!empty($news_l)) {
+				foreach ($news_l as $key => $yx['sidebar']) {
+					$yx['sidebar']['news']['posted'] = date('n, M Y h:i A',$yx['sidebar']['news']['time']);
+					echo YX_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		{{SB_UAD_2}}
+		
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($yx['news']['id'])) {
+				$not_included = $yx['news']['id'];
+			}
+			$fetch_data_array_videos = array(
+				'table' => T_VIDEOS,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'YX_GetVideos',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_videos['where'], $array);
+			}
+			$news_v = YX_FetchDataFromDB($fetch_data_array_videos);
+			?><?php if (!empty($news_v)) { ?>
+				<h4 class="videos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" /></svg> {{LANG more_videos}}</h4>
+			<?php } ?><?php
+			if (!empty($news_v)) {
+				foreach ($news_v as $key => $yx['sidebar']) {
+					$yx['sidebar']['news']['posted'] = date('n, M Y h:i A',$yx['sidebar']['news']['time']);
+					echo YX_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($yx['news']['id'])) {
+				$not_included = $yx['news']['id'];
+			}
+			$fetch_data_array_music = array(
+				'table' => T_MUSIC,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'YX_GetMusic',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_music['where'], $array);
+			}
+			$news_m = YX_FetchDataFromDB($fetch_data_array_music);
+			?><?php if (!empty($news_m)) { ?>
+				<h4 class="music"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21,3V15.5A3.5,3.5 0 0,1 17.5,19A3.5,3.5 0 0,1 14,15.5A3.5,3.5 0 0,1 17.5,12C18.04,12 18.55,12.12 19,12.34V6.47L9,8.6V17.5A3.5,3.5 0 0,1 5.5,21A3.5,3.5 0 0,1 2,17.5A3.5,3.5 0 0,1 5.5,14C6.04,14 6.55,14.12 7,14.34V6L21,3Z" /></svg> {{LANG more_music}}</h4>
+			<?php } ?><?php
+			if (!empty($news_m)) {
+				foreach ($news_m as $key => $yx['sidebar']) {
+					$yx['sidebar']['news']['posted'] = date('n, M Y h:i A',$yx['sidebar']['news']['time']);
+					echo YX_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		{{SB_UAD_3}}
+		
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($yx['news']['id'])) {
+				$not_included = $yx['news']['id'];
+			}
+			$fetch_data_array_quiz = array(
+				'table' => T_QUIZZES,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'YX_GetQuizzes',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_quiz['where'], $array);
+			}
+			$news_q = YX_FetchDataFromDB($fetch_data_array_quiz);
+			?><?php if (!empty($news_q)) { ?>
+				<h4 class="quizzes"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9M10,16V19.08L13.08,16H20V4H4V16H10M16.5,8L11,13.5L7.5,10L8.91,8.59L11,10.67L15.09,6.59L16.5,8Z" /></svg> {{LANG more_quizzes}}</h4>
+			<?php } ?><?php
+			if (!empty($news_q)) {
+				foreach ($news_q as $key => $yx['sidebar']) {
+					$yx['sidebar']['news']['posted'] = date('n, M Y h:i A',$yx['sidebar']['news']['time']);
+					echo YX_LoadPage('sidebar/news');
+				}
+			}
+			?></div>
+			
+		<div class="sidebar-news"><?php
+			$not_included = '';
+			if (!empty($yx['news']['id'])) {
+				$not_included = $yx['news']['id'];
+			}
+			$fetch_data_array_poll = array(
+				'table' => T_POLLS_PAGES,
+				'column' => 'id',
+				'limit' => 4,
+				'order' => array(
+					'type' => 'rand'
+				),
+				'where' => array(
+				    array(
+					    'column' => 'active',
+					    'value' => '1',
+					    'mark' => '='
+				    )    
+				),
+				'final_data' => array(
+		            array(
+					   'function_name' => 'YX_GetPolls',
+					   'column' => 'id',
+					   'name' => 'news'
+		            )
+				)
+			);
+			if (is_numeric($not_included) && !empty($not_included)) {
+				$array = array(
+					'column' => 'id',
+					'value' => $not_included,
+					'mark' => '<>'
+				);
+				array_push($fetch_data_array_poll['where'], $array);
+			}
+			$news_p = YX_FetchDataFromDB($fetch_data_array_poll);
+			?><?php if (!empty($news_p)) { ?>
+				<h4 class="polls"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3,22V8H7V22H3M10,22V2H14V22H10M17,22V14H21V22H17Z" /></svg> {{LANG more_polls}}</h4>
+			<?php } ?><?php
+			if (!empty($news_p)) {
+				foreach ($news_p as $key => $yx['sidebar']) {
+					$yx['sidebar']['news']['posted'] = date('n, M Y h:i A',$yx['sidebar']['news']['time']);
+					echo YX_LoadPage('sidebar/news');
+				}
+			}
+			?></div>	
+	</div>
+</div>

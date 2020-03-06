@@ -1,0 +1,18 @@
+<div class="top-news-list yx_search_result" id="<?php echo $yx['news_saved']['id'];?>">
+	<div class="news latest-news-list" data-id="<?php echo $yx['news_saved']['id'];?>">
+		<a href="<?php echo $yx['news_saved']['url'];?>">
+			<div class="latest-news-img" style="background-image: url('<?php echo($yx['news_saved']['small_image']);?>');"></div>
+			<div class="latest-news-title">
+				<div>
+					<h3><?php echo $yx['news_saved']['title'];?></h3>
+					<div class="latest-news-info">
+						<span class="latest-news-time"><?php echo $yx['news_saved']['publisher']['name'];?></span> - 
+						<span class="latest-news-time"><?php echo $yx['news_saved']['posted'];?></span>
+					</div>
+					<div class="latest-news-desc"><?php echo $yx['news_saved']['description'];?></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="content-shadow custom-page yx_terms">
+	<div class="row">
+		<div class="col-md-3 custom_fixed_element">
+			<div class="yx_terms_sidebar">
+				<ul>
+					<li class="<?php echo ($yx['type'] == 'terms') ? 'active': '';?>"><a href="{{LINK company/terms}}">{{LANG terms_of_use}}</a></li>
+					<li class="<?php echo ($yx['type'] == 'privacy-policy') ? 'active': '';?>"><a href="{{LINK company/privacy-policy}}">{{LANG privacy_policy}}</a></li>
+					<li class="<?php echo ($yx['type'] == 'about-us') ? 'active': '';?>"><a href="{{LINK company/about-us}}">{{LANG about_us}}</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="yx_terms_content">
+				<h1>{{LANG about_us}}</h1>
+				<div class="yx_terms_content_body">
+					<?php echo $yx['terms']['about'];?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

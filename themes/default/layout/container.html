@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>{{CONTAINER_TITLE}}</title>
+      <meta charset="UTF-8">
+      <meta name="title" content="{{CONTAINER_TITLE}}">
+      <meta name="description" content="{{CONTAINER_DESC}}">
+      <meta name="keywords" content="{{CONTAINER_KEYWORDS}}">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      {{OG_META_TAGS}}
+      <link rel="shortcut icon" type="image/png" href="{{CONFIG theme_url}}/img/icon.{{CONFIG icon_extension}}"/>
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/font-awesome-4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/twemoji-awesome.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/mediaelement/build/mediaelementplayer.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/style.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/media-query-breakpoints.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/owl-carousel2/dist/assets/owl.carousel.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/bootsrap-social.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/sweetalert2/dist/sweetalert2.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/swal-forms/swal-forms.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Arvo|Open+Sans|Open+Sans+Condensed:300|Montserrat" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+      <?php if ($yx['page'] == 'register') {?>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <?php } ?>
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/css/bootsrap-social.css">
+      <script src="{{CONFIG theme_url}}/js/jquery-3.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/jquery.form.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/owl-carousel2/dist/owl.carousel.js"></script>
+      <?php if ($yx['page'] == 'user_ads') { ?>
+
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/datatable/datatables-net.min.css">
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/datatable/datatables.min.css">
+      <script src="{{CONFIG theme_url}}/js/datatable/datatables.min.js"></script>
+      <link rel="stylesheet" href="{{CONFIG theme_url}}/js/bootstrap-select/bootstrap-select.min.css">
+      <script src="{{CONFIG theme_url}}/js/bootstrap-select/bootstrap-select.min.js"></script>
+      
+      <?php } ?>
+      <style type="text/css">
+		<?php if ($yx['page'] == 'forgot_password' || $yx['page'] == 'register' || $yx['page'] == 'login') { ?>
+			body{background-color: #d6271e !important;background-image: url("{{CONFIG theme_url}}/img/background-login.jpg");background-attachment: fixed;background-position: center;}
+		<?php } ?>
+        {{CONFIG styles_cc}}
+
+        #mejs__video{
+          height:auto;
+        }
+      </style>
+      <?php if (!empty($yx['config']['google_code'])) {?>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{CONFIG google_code}}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{CONFIG google_code}}');
+      </script>
+      <?php } ?>
+      <script>
+        var site_url = '{{CONFIG site_url}}';
+        function YX_Ajax_Requests_File() {
+          return site_url + '/ajax_requests.php';
+        }
+
+        function YX_ShareToEmail(url){
+          if (!url) { return false;}
+          var share_form = '<form class="form share-e-form"><div class="share-alert"></div><div class="form-group"><input type="text" class="form-control" id="share-en" name="name" placeholder="{{LANG name}}"></div><div class="form-group"><input type="email" class="form-control" id="share-ee" name="email" placeholder="{{LANG recipients_email}}"></div><div class="form-group optional"><textarea placeholder="{{LANG write_message}}" class="form-control" name="text"></textarea></div><div class="form-group" style="margin-bottom: 0;"><button class="btn-main btn btn-main" type="submit" ><i class="fa fa-paper-plane-o progress-icon" data-icon="paper-plane-o"></i> {{LANG send}}</button></div><input type="hidden" name="url" value="{{URL}}"></form>';
+          swal({
+            title: '',
+            showConfirmButton: false,
+            customClass: 'swal2-small',
+            html: share_form.replace('{{URL}}',url)
+          }).then(function(){}, function(){});
+        }
+
+        {{CONFIG header_cc}}
+      </script>
+      
+      {{EXTRA_JS_CODE}}
+   </head>
+   <body {{WHITE_BACKGROUND}}>
+		<div id="focus-overlay"></div>
+       <header>
+         <?php if ($yx['page'] != 'post_data') {?> {{HEADER_HTML}} <?php } ?>      
+       </header>
+
+       <div class="container container-home {{CONTENT_CONTAINER}} latest-container <?php if ($yx['page'] == 'home') {?>yx_home_top_margin<?php } ?>">
+          {{ANNOUNCEMENT}}
+          {{BR_NEWS}}
+          <?php if ($yx['page'] != 'create_new' && $yx['page'] != 'edit-post') {?><div class="ads-contnet">{{HEADER_AD}}</div><?php } ?>
+          {{CONTAINER_CONTENT}}
+          <?php if ($yx['page'] != 'create_new' && $yx['page'] != 'edit-post') {?><div class="ads-contnet">{{FOOTER_AD}}</div><?php } ?>
+       </div>
+       <div class="clear"></div>
+       <footer>
+          <?php if ($yx['page'] != 'post_data') {?> {{FOOTER_HTML}} <?php } ?> 
+          <script>
+            {{CONFIG footer_cc}}
+          </script>
+       </footer>
+		
+		<!-- full screen search -->
+		<div class="yx_full_screen_search">
+			<svg xmlns="http://www.w3.org/2000/svg" class="icon-close" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+			<div class='search-input'>
+				<form class="search-header" role="search" action="{{LINK search}}">
+					<div class="form-group">
+						<input type="text" class="form-control input-search" name="keyword" placeholder="{{LANG search_keyword}}">
+					</div>
+				</form>
+			</div>
+		</div>
+       
+      <!-- JS FILES -->
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/script.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/autosize.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/sweetalert2/dist/sweetalert2.min.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/swal-forms/swal-forms.js"></script>
+      <script type="text/javascript" src="{{CONFIG theme_url}}/js/mediaelement/build/mediaelement-and-player.js"></script>
+      <script type="text/javascript">jQuery(document).ready(function() {jQuery('.custom_fixed_element').theiaStickySidebar({additionalMarginTop: 65});});</script>
+	  
+      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <script async src="//platform.vine.co/static/scripts/embed.js" charset="utf-8"></script> 
+      <input type="hidden" value="<?php echo YX_CreateSession()?>" class="main_session">
+      <?php
+      if(!empty($yx['story']['is_active'])) {
+      ?>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=1643990952546825";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        
+        
+      </script>
+      <?php
+      }
+      ?>
+		<script>
+		jQuery(document).ready(function($) {
+			$('.dropdown-toggle.create, #create_menu_toggle').on('click',function(){
+				if($('body').hasClass('yx_content_focus')) {
+                    $('body').removeClass('yx_content_focus');
+                } else { 
+					$('body').addClass('yx_content_focus');
+                }
+			});
+			$('#focus-overlay, nav.navbar-findcond').on('click',function (){
+				$("body").removeClass('yx_content_focus');
+			});
+			
+			$('nav button.search').click( function(){
+				document.body.style.overflow = 'hidden';
+				$('body').addClass('search-active');
+				$('.input-search').focus();
+			});
+			$('.icon-close').click( function(){
+				document.body.style.overflow = 'auto';
+				$('body').removeClass('search-active');
+			});
+		});
+		</script>
+      <!-- End 'JS FILES' -->
+    <div class="cd-top"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" /></svg></div>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+      <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+      <script>
+      window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#fff",
+            "text": "#333"
+          },
+          "button": {
+            "background": "#ef4957",
+            "text": "#fff"
+          }
+        },
+        "theme": "edgeless",
+        "position": "right-bottom",
+        "content": {
+          "message": "{{LANG cookie_message}}",
+          "dismiss": "{{LANG cookie_dismiss}}",
+          "link": "{{LANG cookie_link}}",
+          "href": "{{LINK company/privacy-policy}}"
+        }
+      })});
+      </script>
+
+      
+      <!-- 
+      COOKIE CODE!
+      THIS IS USED TO DETECT AND SET
+      THE USERS REGION (R)
+      -->
+      <script>
+        function setCookie(cname, cvalue, exdays) {
+          var d = new Date();
+          d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+          var expires = "expires="+d.toUTCString();
+          document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+          var name = cname + "=";
+          var ca = document.cookie.split(';');
+          for(var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                  c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                  return c.substring(name.length, c.length);
+              }
+          }
+          return "";
+      }
+
+     <?php if (empty($_COOKIE['r'])) { ?>
+        $.ajax({
+          url: 'https://extreme-ip-lookup.com/json/',
+          type: 'GET',
+          dataType: 'json'
+        })
+        .done(function(data) {
+          if (data.status == 'success') {
+            setCookie('r', window.btoa(data.country), 1);
+            window.location.href = '{{CONFIG site_url}}';
+          }
+          else{
+            setCookie('r', window.btoa('unknown'), 1);
+            window.location.href = '{{CONFIG site_url}}';
+          }
+        })
+        .fail(function() {
+          setCookie('r', window.btoa('unknown'), 1);
+          window.location.href = '{{CONFIG site_url}}';
+        })
+        .always(function() {
+        });
+  
+      <?php } ?>
+    </script>
+   </body>
+</html> 

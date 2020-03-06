@@ -1,0 +1,139 @@
+<style>
+    /* We need to overwite the current container size - this will be a fullscreen landing page */
+    body,
+    html,
+    .container,
+    .container-home {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin-top: -30px;
+        font-family: Roboto;
+        position: relative;
+    }
+</style>
+
+<div>
+    <div class="main_header">
+        <div class="brand">
+            <img src="{{CONFIG theme_url}}/img/mobile-logo.png" width="50px" height="50px">
+        </div>
+        <div class="header_sections">
+            <ul class="header_list">
+                <li class="head_item">
+                    <a href="#speed">{{LANG speed}}</a>
+                </li>
+                <li class="head_item">
+                    <a href="#flexibility">{{LANG flexibility}}</a>
+                </li>
+                <li class="head_item">
+                    <a href="#roaming">{{LANG roaming}}</a>
+                </li>
+                <li class="head_item">
+                    <a href="#calls-and-texts">{{LANG calls_and_texts}}</a>
+                </li>
+                <li class="head_item">
+                    <a href="#perks">{{LANG perks}}</a>
+                </li>
+                <li class="head_item">
+                    <a href="#reliability">{{LANG reliability}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="account_section">
+            <ul class="account_list">
+                <li class="account_item">
+                    <a href="mobile/store">
+                        <i class="material-icons">local_mall</i>
+                    </a>
+                </li>
+                <li class="account_item">
+                    <a href="" onclick="registerInterest()">{{LANG register_interest}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <section class="hero_section">
+        <div class="hero_bottom_line"></div>
+        <div class="hero_info_container">
+            <h4>{{LANG yozax_mobile}}</h4>
+            <h1>{{LANG experience}} <br>{{LANG real_freedom}}</h1>
+            <a class="buy_btn">{{LANG register_interest}}</a>
+            <button class="hero_see_more">{{LANG see_more}}</button>
+            <div class="hero_specs">
+                <h5>{{LANG hero_specs_text}}</h5>
+                <div class="specs_box">
+                    <div class="specs_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="M15.91 13.34l2.636-4.026-.454-.406-3.673 3.099c-.675-.138-1.402.068-1.894.618-.736.823-.665 2.088.159 2.824.824.736 2.088.665 2.824-.159.492-.55.615-1.295.402-1.95zm-3.91-10.646v-2.694h4v2.694c-1.439-.243-2.592-.238-4 0zm8.851 2.064l1.407-1.407 1.414 1.414-1.321 1.321c-.462-.484-.964-.927-1.5-1.328zm-18.851 4.242h8v2h-8v-2zm-2 4h8v2h-8v-2zm3 4h7v2h-7v-2zm21-3c0 5.523-4.477 10-10 10-2.79 0-5.3-1.155-7.111-3h3.28c1.138.631 2.439 1 3.831 1 4.411 0 8-3.589 8-8s-3.589-8-8-8c-1.392 0-2.693.369-3.831 1h-3.28c1.811-1.845 4.321-3 7.111-3 5.523 0 10 4.477 10 10z" />
+                        </svg>
+                        <p>{{LANG no_throttles}}</p>
+                    </div>
+                    <div class="specs_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="M3 18.94c-1.623.741-3-1.295-3-1.295.823-.399 1.795-.923 3-1.509v2.804zm-3-12.585s1.508-2.071 3.147-1.276c1.006.487 7.804 3.811 11.286 5.503l.875-.421c.754-.364 1.248-.49 1.02-1.43-.572-2.358 1.486-4.731 4.05-4.731 2.056 0 3.59 1.514 3.59 3.379 0 1.406-.875 2.805-2.319 3.531-1.442.726-2.454.161-3.887.858l-.448.217.49.24c1.431.701 2.444.138 3.885.868 1.439.729 2.31 2.125 2.31 3.529.001 1.86-1.526 3.378-3.587 3.378-2.548 0-4.633-2.356-4.049-4.74.23-.939-.264-1.067-1.016-1.433-.394-.19-11.169-5.447-15.347-7.472zm18.144 2.254c.434.909 1.665 1.226 2.745.705 1.08-.52 1.605-1.683 1.172-2.591-.434-.909-1.665-1.226-2.745-.706s-1.606 1.683-1.172 2.592zm1.201 9.371c1.078.522 2.31.209 2.746-.699.436-.908-.087-2.072-1.165-2.595-1.079-.522-2.311-.209-2.746.699-.437.909.086 2.073 1.165 2.595zm-6.345-1.98h-1v2h1v-2zm-2 2v-4h-1v4h1zm-1-10.913l1 .488v-1.575h-1v1.087zm4.825 7.821l-.825-.402v3.994c0 .276-.224.5-.5.5h-4.5v-6.931l-2-.975v7.906h-1.5c-.276 0-.5-.224-.5-.5v-8.379l-1-.487v8.866c0 .829.671 1.5 1.5 1.5h8c.829 0 1.5-.671 1.5-1.5v-3.509l-.175-.083zm-9.1-9.908h1.275v.623l.32.156 1.68.82v-1.599h4.5c.276 0 .5.224.5.5v3.537l.436.212.351-.169.212-.101h.001v-3.479c0-.829-.671-1.5-1.5-1.5h-8c-.391 0-.743.153-1.01.397l1.235.603z" />
+                        </svg>
+                        <p>{{LANG no_fees}}</p>
+                    </div>
+                    <div class="specs_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="M20 23h2v1h-20v-1h2v-23h16v23zm-1-22h-14v22h14l-10-1.954v-18.015l10-2.031zm-7 11h-2v1h2v-1z" />
+                        </svg>
+                        <p>{{LANG no_contracts}}</p>
+                    </div>
+                    <div class="specs_item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
+                            <path fill="white"
+                                d="M18.028 24h-.018c-.268 0-.49-.213-.499-.483-.05-1.462.19-2.847 2.265-3.08.795-.089.858-.367.996-.977.229-1.008.607-1.922 2.701-2.032.285-.02.512.197.526.473.014.276-.197.512-.473.526-1.512.079-1.618.547-1.778 1.254-.152.667-.359 1.581-1.861 1.751-1.016.113-1.432.423-1.377 2.051.01.276-.207.507-.482.517zm-8.342-18.714c.241.213.53.366.842.444l3.566.896c.3.076.617.051.903-.07 1.082-.461 3.862-1.684 5.062-2.155.76-.299 1.268.63.655 1.097-1.39 1.062-5.714 4.086-5.714 4.086l-.862 3.648s1.785 1.86 2.544 2.7c.423.469.696.919.421 1.595-.481 1.181-1.457 3.477-1.908 4.547-.255.605-1.164.453-1.015-.322.217-1.128.781-4.016.781-4.016l-3.558-1.62s-.253 5.953-.327 7.296c-.019.341-.253.589-.582.588-.249-.001-.508-.173-.612-.596-.534-2.178-2.142-8.99-2.142-8.99-.209-.837-.329-1.53-.053-2.564l.915-3.85s-2.726-3.984-3.709-5.476c-.402-.611.356-1.18.808-.78l3.985 3.542zm-7.178 8.489l-.853.511 2.708 4.524c-1.788.306-2.917 1.904-2.048 3.356.537.897 1.753 1.106 2.622.586 1.034-.619 1.774-1.952.979-3.284l-3.408-5.693zm17.721-5.193l.904 1.669 1.867.344-1.308 1.376.249 1.882-1.712-.819-1.713.819.25-1.882-1.309-1.376 1.867-.344.905-1.669zm-17.298-2.935l-2.934 2.935 2.934 2.935 2.935-2.935-2.935-2.935zm9.055-5.398c1.36-.626 2.972-.03 3.597 1.33.626 1.36.03 2.972-1.33 3.598-1.36.625-2.972.029-3.598-1.331-.625-1.36-.029-2.972 1.331-3.597z" />
+                        </svg>
+                        <p>{{LANG no_bs}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero_background"></div>
+
+        <br>
+        <br>
+
+    </section>
+    </body>
+
+
+
+    <script>
+        function registerInterest() {
+
+            $.ajax({
+                url: YX_Ajax_Requests_File() + '?f=register_interest',
+                type: 'POST',
+                dataType: 'json',
+            })
+            .done(function(data) {
+          if (data.status == 200) {
+            location.reload();
+          }
+          else{
+            setCookie('r', window.btoa('string'), 1);
+            window.location.href = '{{CONFIG site_url}}/login';
+          }
+        })
+        .fail(function() {
+          alert('unknown error');
+        })
+        .always(function() {
+        });
+        }
+
+    </script>

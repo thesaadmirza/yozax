@@ -1,0 +1,402 @@
+<div class="row">
+    <div class="col-md-8 no-padding-right">
+        <!-- LATEST LISTS  -->
+
+        <div class="yx_home_ad">{{HP_UAD_1}}</div>
+
+        <div class="yx-plus-latest-lists-cont">
+            <div class="width-100">
+                <div id="yx-plus-lists-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <?php 
+                                    foreach ($yx['latest_lists'] as $key => $yx['trending_data']): 
+                                        $active = ($key == 0) ? "class='active'" : '';
+                                        echo "<li $active data-target='#yx-plus-lists-carousel' data-slide-to='$key'></li>";
+                                    endforeach;
+                                ?>
+                    </ol>
+
+                    <div class="carousel-inner" role="listbox">
+                        <?php 
+                                    $len = count($yx['latest_lists']);
+                                    foreach ($yx['latest_lists'] as $key => $yx['trending_data']): 
+
+                                            $yx['trending_data']['active'] = ($key == 0) ? 'active' : '';
+
+                                            if (!empty($yx['trending_data']['news'])) {
+                                                $yx['trending_data']['news'] = $yx['trending_data']['news'];
+                                            }
+                                            if (!empty($yx['trending_data']['video'])) {
+                                                $yx['trending_data']['news'] = $yx['trending_data']['video'];
+                                            }
+                                            if (!empty($yx['trending_data']['list'])) {
+                                                $yx['trending_data']['news'] = $yx['trending_data']['list'];
+                                            }
+                                            if (!empty($yx['trending_data']['poll'])) {
+                                                $yx['trending_data']['news'] = $yx['trending_data']['poll'];
+                                            }
+                                            if (!empty($yx['trending_data']['music'])) {
+                                                $yx['trending_data']['news'] = $yx['trending_data']['music'];
+                                            }
+                                            echo YX_LoadPage('home/lists/cr-item');
+                                    endforeach;
+                                ?>
+                    </div>
+                    <a class="left carousel-control" href="#yx-plus-lists-carousel" role="button" data-slide="prev">
+                        <i class="fa fa-chevron-circle-left block" aria-hidden="true"></i>
+                    </a>
+                    <a class="right carousel-control" href="#yx-plus-lists-carousel" role="button" data-slide="next">
+                        <i class="fa fa-chevron-circle-right pull-right" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <!-- HOME TRENDING -->
+        <div class="yx-plus-trending-list-cont">
+            <div class="width-100">
+                <div class="yx_main_text_head trending">
+                    <h4>{{LANG trending}}</h4>
+                </div>
+                <div class="yx_latest_trending_data_parent">
+                    <div class="yx_latest_trending_data">
+                        <div class="width-100">
+                            <?php 
+									foreach ($yx['trending_list'] as $key => $yx['trending_data']): 
+										if (!empty($yx['trending_data']['news'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['news'];
+										}
+										if (!empty($yx['trending_data']['quiz'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['quiz'];
+										}
+										if (!empty($yx['trending_data']['list'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['list'];
+										}
+										if (!empty($yx['trending_data']['poll'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['poll'];
+										}
+										if (!empty($yx['trending_data']['music'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['music'];
+										}
+										echo YX_LoadPage('home/latest/trending');
+									endforeach;
+									?>
+                        </div>
+                        <div class="width-100">
+                            <?php 
+									foreach ($yx['trending_news'] as $key => $yx['trending_data']): 
+										if (!empty($yx['trending_data']['news'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['news'];
+										}
+										if (!empty($yx['trending_data']['quiz'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['quiz'];
+										}
+										if (!empty($yx['trending_data']['list'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['list'];
+										}
+										if (!empty($yx['trending_data']['poll'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['poll'];
+										}
+										if (!empty($yx['trending_data']['music'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['music'];
+										}
+										echo YX_LoadPage('home/latest/trending');
+									endforeach;
+									?>
+                        </div>
+                    </div>
+                    <div class="yx_latest_trending_data">
+                        <div class="width-100">
+                            <?php 
+									foreach ($yx['trending_poll'] as $key => $yx['trending_data']): 
+										if (!empty($yx['trending_data']['news'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['news'];
+										}
+										if (!empty($yx['trending_data']['quiz'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['quiz'];
+										}
+										if (!empty($yx['trending_data']['list'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['list'];
+										}
+										if (!empty($yx['trending_data']['poll'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['poll'];
+										}
+										if (!empty($yx['trending_data']['music'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['music'];
+										}
+										echo YX_LoadPage('home/latest/trending');
+									endforeach;
+									?>
+                        </div>
+                        <div class="width-100">
+                            <?php 
+									foreach ($yx['trending_quiz'] as $key => $yx['trending_data']): 
+										if (!empty($yx['trending_data']['news'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['news'];
+										}
+										if (!empty($yx['trending_data']['quiz'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['quiz'];
+										}
+										if (!empty($yx['trending_data']['list'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['list'];
+										}
+										if (!empty($yx['trending_data']['poll'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['poll'];
+										}
+										if (!empty($yx['trending_data']['music'])) {
+											$yx['trending_data']['news'] = $yx['trending_data']['music'];
+										}
+										echo YX_LoadPage('home/latest/trending');
+									endforeach;
+									?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        {{HP_UAD_2}}
+        <!-- LATEST VIDEOS -->
+        <div class="width-100">
+            <div class="width-100">
+                <div class="yx_main_text_head videos">
+                    <h4>{{LANG latest_videos}}</h4>
+                </div>
+            </div>
+            <div class="yx_home_latest_videos row">
+                <?php 
+                            foreach ($yx['latest_videos'] as $key => $yx['latest_videos_data']): 
+                                echo YX_LoadPage('home/latest/latest-videos');
+                            endforeach;
+                        ?>
+            </div>
+            <div class="btn_v_more"><a href="{{LINK latest-videos}}" class="btn">{{LANG view_more}}</a></div>
+        </div>
+        <!-- HOME LATEST POLLS -->
+        <div class="yx-plus-latest-polls-list-cont">
+            <div class="width-100">
+                <div class="yx_main_text_head polls">
+                    <h4>{{LANG latest_polls}}</h4>
+                </div>
+                <div class="width-100 ">
+                    <?php 
+                                foreach ($yx['polls'] as $key => $yx['trending_data']):  
+                                    if (!empty($yx['trending_data']['news'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['news'];
+                                    }
+                                    if (!empty($yx['trending_data']['video'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['video'];
+                                    }
+                                    if (!empty($yx['trending_data']['list'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['list'];
+                                    }
+                                    if (!empty($yx['trending_data']['poll'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['poll'];
+                                    }
+                                    if (!empty($yx['trending_data']['music'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['music'];
+                                    }
+                                    echo YX_LoadPage('home/latest/latest-polls');
+                                endforeach;
+                            ?>
+                </div>
+                <div class="btn_v_more"><a href="{{LINK latest-polls}}" class="btn">{{LANG view_more}}</a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        {{HP_UAD_3}}
+        <!-- HOME LATEST QUIZZES -->
+        <div class="yx-plus-latest-polls-list-cont">
+            <div class="width-100">
+                <div class="yx_main_text_head quizzes">
+                    <h4>{{LANG latest_quizzes}}</h4>
+                </div>
+                <div class="yx_home_latest_quiz row">
+                    <?php 
+                                foreach ($yx['quizzes'] as $key => $yx['trending_data']): 
+                                    if (!empty($yx['trending_data']['news'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['news'];
+                                    }
+                                    if (!empty($yx['trending_data']['video'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['video'];
+                                    }
+                                    if (!empty($yx['trending_data']['list'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['list'];
+                                    }
+                                    if (!empty($yx['trending_data']['poll'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['poll'];
+                                    }
+                                    if (!empty($yx['trending_data']['music'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['music'];
+                                    }
+
+                                    if (!empty($yx['trending_data']['quiz'])) {
+                                        $yx['trending_data']['news'] = $yx['trending_data']['quiz'];
+                                    }
+
+                                    echo YX_LoadPage('home/latest/latest-quizzes');
+                                endforeach;
+                            ?>
+                </div>
+                <div class="btn_v_more"><a href="{{LINK latest-quizzes}}" class="btn">{{LANG view_more}}</a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <!-- /// RSS FEED /// -->
+        <div class="yx-plus-rss-feed-list-cont">
+            <?php if (count($yx['yx_rss_feed']) > 0): ?>
+            <div class="yx_main_text_head rss">
+                <h4>{{LANG read_more}}</h4>
+            </div>
+            <div class="width-100">
+                <?php 
+                            $len = count($yx['yx_rss_feed']);
+                            foreach ($yx['yx_rss_feed'] as $key => $yx['latest_news_data']): 
+                                $yx['latest_news_data']['last'] = false;
+                                if ($key == $len -1) {
+                                   $yx['latest_news_data']['last'] = true;
+                                } 
+                                echo YX_LoadPage('home/rss-feed');
+                            endforeach;
+                            ?>
+                <div class="clear"></div>
+            </div>
+            <br>
+            <?php endif; ?>
+        </div>
+        <!-- /// END RSS_FEED /// -->
+    </div>
+    <div class="col-md-4 custom_fixed_element">
+        <div class="width-100">
+            <!-- TOP NEWE -->
+            <div>
+                <div class="yx_main_text_head news">
+                    <h4>{{LANG top_news}}</h4>
+                </div>
+                <div class="width-100 yx-plus-sidebar-news-list-container">
+                    <?php 
+                                foreach ($yx['top_news_multi'] as $key => $yx['top_news_data']):  
+                                    echo YX_LoadPage('home/top/top-news');
+                                endforeach;
+                            ?>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            {{SB_UAD_1}}
+            <!--  HOME LISTS AD -->
+
+            <!-- Subscribe -->
+            <?php if ($yx['config']['show_subscribe_box'] == 1): ?>
+            <div>
+                <div class="yx_main_text_head">
+                    <h4>{{LANG subscribe_us}}</h4>
+                </div>
+                <div class="width-100">
+                    <div class="sidebar_subscribe_box">
+                        <div class="sidebar-subscribe-box-wrapper">
+                            <span class="subscribe_svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4C2.89,20 2,19.1 2,18V6C2,4.89 2.89,4 4,4M12,11L20,6H4L12,11M4,18H20V8.37L12,13.36L4,8.37V18Z" />
+                                    </svg></span>
+                            <p>{{LANG subscribe_info}}</p>
+                            <div class="sidebar-subscribe-box-form">
+                                <form
+                                    action="https://feedburner.google.com/fb/a/mailverify?uri={{CONFIG subscribe_box_username}}"
+                                    class="sidebar-subscribe-box-form" method="post"
+                                    onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri={{CONFIG subscribe_box_username}}', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"
+                                    target="popupwindow">
+                                    <input name="uri" type="hidden" value="{{CONFIG subscribe_box_username}}" />
+                                    <input name="loc" type="hidden" value="en_US" />
+                                    <input class="form-control" name="email" type="email" required
+                                        placeholder="{{LANG email_address}}" />
+                                    <input class="btn btn-main yx_btn" title="" type="submit"
+                                        value="{{LANG subscribe_now}}" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <?php endif;?>
+
+            <!-- LATEST MUSIC -->
+            <div>
+                <div class="yx_main_text_head music">
+                    <h4>{{LANG latest_music}}</h4>
+                </div>
+                <div class="width-100">
+                    <?php 
+                                foreach ($yx['music'] as $key => $yx['trending_data']): 
+                                    $yx['trending_data']['post'] = $yx['trending_data']['music'];
+                                    echo YX_LoadPage('home/latest/latest-music');
+                                endforeach;
+                            ?>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            {{SB_UAD_2}}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.featuredBlock--child').slick({
+            infinite: false,
+            dots: true,
+            slidesToShow: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
+        });
+    });
+
+    $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 50) {
+            $(".navbar.navbar-fixed-top").removeClass("yx_trans_head");
+        } else {
+            $(".navbar.navbar-fixed-top").addClass("yx_trans_head");
+        }
+    });
+
+    $(document).ready(function () {
+        $('#yx_news_ticker').flame_trending_news({
+            effect: 'slide-right'
+        });
+    });
+
+    jQuery(document).ready(function ($) {
+        $('.yx-plus-latest-news-list-wrapper').equalHeights();
+
+        $('#yx-plus-lists-carousel').carousel({
+            interval: 10000
+        });
+
+        $('#yx-plus-top-news-carousel').carousel({
+            interval: false,
+            pause: true,
+            wrap: true
+        });
+
+        $("button.slide-video-cr").click(function (event) {
+            var derection = $(this).attr('data-der');
+
+            if (derection == 'left') {
+                $('#yx-plus-home-latest-videos-owl-carousel').trigger('prev.owl.carousel');
+            }
+            else if (derection == 'right') {
+                $('#yx-plus-home-latest-videos-owl-carousel').trigger('next.owl.carousel');
+            }
+            else {
+                return false;
+            }
+        });
+    });
+</script>

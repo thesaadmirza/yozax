@@ -1,0 +1,96 @@
+<div class="fluid">
+    <form class="form-horizontal setting-panel" id="wallet-settings" method="POST">
+        <?php if (isset($yx['refilled_balance'])): ?>
+        <div class="alert-info alert">
+            <i class="fa fa-check-circle-o"></i>
+            <?php 
+            $subject = $yx['lang']['ur_balance_refilled'];
+            echo str_replace('{{AMOUNT}}', $yx['refilled_balance'],$subject);
+            ?>
+        </div>
+        <?php endif; ?>
+        <div class="setting-wallet-alert"></div>
+        <fieldset>
+            <!-- password input-->
+            <div class="text-center yx_wallet">
+                <label>{{LANG balance}}</label>
+                <h5>
+                    <span>$</span>
+                    <b>{{USER wallet}}</b>
+                </h5>
+            </div>
+            <hr>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="yx_wallet_add text-center">
+                            <label class="" for="amount">{{LANG add_money}}</label>  
+                            <div class="form-group">
+                                <input type="number" step="any" class="form-control input-md" name="amount" required="required" id="amount" placeholder="{{LANG enter_amount}}..">
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-info">
+                                        <input type="radio" name="payment_via" value="paypal" id="paypal_payment_via" autocomplete="off" checked> Paypal
+                                    </label>
+                                    <label class="btn btn-info active">
+                                        <input type="radio" name="payment_via" value="stripe" id="stripe_payment_via" autocomplete="off" checked> Stripe
+                                    </label> 
+                                </div> 
+                            </div>
+                            <div class="form-group">
+                                <button id="submit" name="submit" class="btn btn-main"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg> {{LANG replenish_balance}}</button>
+                            </div>                       
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+                <input type="hidden" name="hash_id" value="<?php echo YX_CreateSession()?>">
+                    <input type="hidden" name="user_id" value="{{USER user_id}}">
+                        <!-- Button (Double) -->
+
+                        </fieldset>
+                        </form>
+                        </div>
+                        <script>
+                            $(function () {
+                                var form = $('form#wallet-settings');
+                                form.ajaxForm({
+                                    url: YX_Ajax_Requests_File() + '?f=wallet&s=upto&urlc='+window.location.href+'&user_id={{USER user_id}}',
+                                    dataType: 'json',
+                                    beforeSend: function () {
+                                        form.find('button').text("{{LANG please_wait}}").attr('disabled', 'true');
+                                    },
+                                    success: function (data) {
+                                        if (data.status == 200) {
+                                            if (data.url == "stripe") {
+                                                $.getScript('https://js.stripe.com/v3/', function () {
+                                                    var stripe = Stripe("<?= $yx['config']['stripe_publisher_key'] ?>");
+                                                   
+                                                    stripe.redirectToCheckout({
+                                                        // Make the id field from the Checkout Session creation API response
+                                                        // available to this file, so you can provide it as parameter here
+                                                        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+                                                        sessionId: data.key
+                                                    }).then(function (result) {
+                                                        // If `redirectToCheckout` fails due to a browser or network
+                                                        // error, display the localized error message to your customer
+                                                        // using `result.error.message`.
+                                                    });
+                                                });
+                                            } else {
+                                                window.location.href = data.url;
+                                            }
+
+                                        } else if (data.status == 500) {
+                                            swal({
+                                                title: "{{LANG error}}",
+                                                text: "{{LANG error_found_request}}",
+                                                type: "error"
+                                            });
+                                        }
+                                    }
+                                });
+                            });
+                        </script>

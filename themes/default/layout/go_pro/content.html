@@ -1,0 +1,178 @@
+<?php
+$country = base64_decode($_COOKIE['r']);
+
+if ($country == "United Kingdom") {
+    $payment_symbol = "£";
+}
+else if (in_array($country, ['Austria', 'Belgium', 'Cyrpus', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Portugal', 'Slovakia', 'Slovenia', 'Spain'], true )) {
+    $payment_symbol = "€";
+}
+else if ($country == "New Zealand") {
+    $payment_symbol = "$";
+}
+else if ($country == "Australia") {
+    $payment_symbol = "$";
+}
+else if ($country == "Canada") {
+    $payment_symbol = "$";
+}
+else{
+    $payment_symbol = "$"; //fallack to USD as default
+}
+?>
+
+<?php if (YX_IsPRO() == false): ?>
+<div class="pro-packages-container yx-plus-box-shadow">
+	<div class="col-md-10 col-sm-12 col-xs-12 col-lg-10 col-md-offset-1 col-lg-offset-1">
+		<div class="pro-packages-header">
+			<h2>{{LANG pro_packages}}</h2>
+			<p><?php
+					$name    = $yx['config']['name'];
+					$subject = $yx['lang']['discover_features'];
+					echo str_replace('{{SITE_NAME}}',$name,$subject);
+				?> 🎉
+			</p>
+		</div>
+		<div class="yx_go_pro">
+			<div class="yx_gp_content">
+				<h2>{{LANG pick_plan}}</h2>
+				<div class="yx_gp_details">
+					<ul>
+						<li><div class="yx_gp_bg_shadow"></div><span>{{LANG posting_limit}}</span></li>
+						<li><div class="yx_gp_bg_shadow"></div><span>{{LANG featured_posts}}</span></li>
+						<li><div class="yx_gp_bg_shadow"></div><span>{{LANG no_ads}}</span></li>
+						<li><div class="yx_gp_bg_shadow"></div><span>{{LANG verified_badge}}</span></li>
+					</ul>					
+				</div>
+			</div>
+			<div class="yx_gp_features">
+				<div class="yx_gp_feat">
+					<div class="yx_gp_feat_head">
+						<span class="yx_gp_duration">{{LANG free_mbr}}</span>
+						<h2 class="yx_gp_monthly_heading"><?php echo($payment_symbol); ?>0/m</h2>
+					</div>
+					<div class="yx_gp_feat_body">
+						<ul>
+							<li><span>{{LANG posting_limit}}</span>{{CONFIG user_max_posts}}</li>
+							<li><span>{{LANG featured_posts}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></li>
+							<li><span>{{LANG no_ads}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></li>
+							<li><span>{{LANG verified_badge}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"></path></svg></li>
+						</ul>
+						<a href="{{LINK }}" class="btn btn-info">{{LANG stay_free}}</a>
+					</div>
+				</div>
+				<div class="yx_gp_feat">
+					<div class="yx_gp_feat_head">
+						<span class="yx_gp_duration">{{LANG pro_mbr}}</span>
+						<h2 class="yx_gp_monthly_heading"><?php echo($payment_symbol); ?>{{CONFIG pro_pkg_price}}/m</h2>
+					</div>
+					<div class="yx_gp_feat_body">
+						<ul>
+							<li><span>{{LANG posting_limit}}</span>Unlimited</li>
+							<li><span>{{LANG featured_posts}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg></li>
+							<li><span>{{LANG no_ads}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg></li>
+							<li><span>{{LANG verified_badge}}</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M11,16.5L18,9.5L16.59,8.09L11,13.67L7.91,10.59L6.5,12L11,16.5Z" /></svg></li>
+						</ul>
+						<a href="javascript:void();"  data-toggle="modal" data-target="#choosePaymentMethod" class="btn btn-info">{{LANG upgrade}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<script>
+	function YX_PurchasePkg(pkg,meth,self){
+		if (!pkg || pkg != 'pro' || !self) {
+			return false;
+		}
+
+		$(self).text("{{LANG please_wait}}").attr('disabled', 'true');
+
+		$.ajax({
+			url: YX_Ajax_Requests_File() +  '?f=go_pro&s=purchase&hash_id=' + $('.main_session').val()+'&urlc='+window.location.href,
+			type: 'POST',
+			dataType: 'json',
+			data: {type: pkg,payment_via:meth},
+		})
+		.done(function(data) {
+
+			if (data.status == 200) {
+				 if (data.url == "stripe") {
+                                                $.getScript('https://js.stripe.com/v3/', function () {
+                                                    var stripe = Stripe("<?= $yx['config']['stripe_publisher_key'] ?>");
+                                                   
+                                                    stripe.redirectToCheckout({
+                                                        // Make the id field from the Checkout Session creation API response
+                                                        // available to this file, so you can provide it as parameter here
+                                                        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+                                                        sessionId: data.key
+                                                    }).then(function (result) {
+                                                        // If `redirectToCheckout` fails due to a browser or network
+                                                        // error, display the localized error message to your customer
+                                                        // using `result.error.message`.
+                                                    });
+                                                });
+                                            } else {
+                                                window.location.href = data.url;
+                                            }
+			}
+
+			else{
+				swal({
+					title: "{{LANG error}}",
+					text: "{{LANG error_found_request}}",
+					type: "error"
+				});
+			}
+		})
+		.fail(function() {
+			console.log("error");
+		});
+	}
+</script>
+
+<?php else: ?>
+<div class="pro-packages-container yx-plus-box-shadow">
+	<div class="go_pro-head-upgraded">
+		<h4>{{LANG congratulations}} 🎉</h4>
+		<p>{{LANG u_are_pro}}</p>
+	</div>
+	<div class="go_pro-footer-upgraded">
+		<a href="{{LINK }}">
+			<button class="btn-main btn btn-lg">		
+				{{LANG start_new_features}}
+			</button>
+		</a>
+	</div>
+</div>
+<?php endif; ?>
+
+
+<!-- Modal -->
+<div class="modal fade" id="choosePaymentMethod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Please select a payment method</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-md-12 text-center">
+		  <button type="button" class="btn btn-link" onclick="YX_PurchasePkg('pro','paypal',this);" style="width: 200px; height: 100px;"><img src="themes/default/img/paypal-logo.png" style="width:100%;"></button>
+		  <label>OR</label>
+          <button type="button" class="btn btn-link" onclick="YX_PurchasePkg('pro','stripe',this);" style="width: 200px; height: 100px;"><img src="themes/default/img/stripe-logo.png" style="width:100%;"></button>
+                  
+              </div>
+          </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+      </div>
+    </div>
+  </div>
+</div>
